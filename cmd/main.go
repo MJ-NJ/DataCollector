@@ -1,5 +1,7 @@
 package main
 
+import "github.com/MJ-NJ/DataCollector/modules/parser"
+
 // This will house the main server which will control the server
 // This will get input of the site name, specific fields to check for in the URI,
 // datatypes for the fields in a JSON file conf file
@@ -9,3 +11,17 @@ package main
 // 2. Other way is to Just give a website like www.website.com
 // --> Have a search depth, try all possible things from most common uri words and try again
 // till we keep hitting, like a tree and backtrack when needed.
+func loadConfig(path string) (*parser.ScrapeConfig, error) {
+	// Locate file
+	// Read file
+	// Convert to struct
+	// Return
+
+	return &parser.ScrapeConfig{}, nil
+}
+func main() {
+
+	// Take input from CLIENT REQ or CLI
+	// This is a JSON File
+
+}
