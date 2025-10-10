@@ -45,3 +45,11 @@ Cron based/ type scheduler for the processes
 
 ### Metrics and Logging 
 Prometheus + structured logs for observability
+
+
+// We can go 2 ways,
+// 1. search in same name it www.website.com/abc/123/abce235asw35(:id)
+// --> So here we give the website like this, so we enumerate letters in abc, nums in 123, strings in id
+// 2. Other way is to Just give a website like www.website.com
+// --> Have a search depth, try all possible things from most common uri words and try again
+// till we keep hitting, like a tree and backtrack when needed.
