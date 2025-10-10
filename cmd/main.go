@@ -1,27 +1,48 @@
-package main
-
-import "github.com/MJ-NJ/DataCollector/modules/parser"
-
 // This will house the main server which will control the server
 // This will get input of the site name, specific fields to check for in the URI,
 // datatypes for the fields in a JSON file conf file
-// We can go 2 ways,
-// 1. search in same name it www.website.com/abc/123/abce235asw35(:id)
-// --> So here we give the website like this, so we enumerate letters in abc, nums in 123, strings in id
-// 2. Other way is to Just give a website like www.website.com
-// --> Have a search depth, try all possible things from most common uri words and try again
-// till we keep hitting, like a tree and backtrack when needed.
-func loadConfig(path string) (*parser.ScrapeConfig, error) {
-	// Locate file
-	// Read file
-	// Convert to struct
-	// Return
+package main
 
-	return &parser.ScrapeConfig{}, nil
-}
+import (
+	"fmt"
+	"os"
+
+	"github.com/MJ-NJ/DataCollector/config"
+	"github.com/urfave/cli/v2"
+)
+
 func main() {
 
-	// Take input from CLIENT REQ or CLI
-	// This is a JSON File
+	app := &cli.App{
+		Name:  "scraper",
+		Usage: "Configurable data scraping engine",
+		Flags: []cli.Flag{
+			&cli.StringFlag{
+				Name:     "path",
+				Usage:    "provide the file path of the input here",
+				Required: true,
+			},
+			&cli.BoolFlag{
+				Name:  "dry-run",
+				Usage: "use this when need to print the site",
+			},
+		},
+		Action: func(ctx *cli.Context) error {
+			configPath := ctx.String("path")
+			config, err := config.LoadConfig(configPath)
+			if err != nil {
+				return err
+			}
 
+			if ctx.Bool("dry-run") {
+				fmt.Printf("[Dry Run] Would scrape the site: %s", config.URL)
+			}
+			fmt.Printf("\nstarted scraping")
+			return nil
+		},
+	}
+
+	if err := app.Run(os.Args); err != nil {
+		fmt.Printf("error: %v", err)
+	}
 }
