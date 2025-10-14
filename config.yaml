@@ -1,0 +1,8 @@
+url: "https://example.com"
+mode: "enumerate"
+uri_template: "/abc/{num}/{id}"
+fields:
+  num: "int"
+  id: "string"
+search_depth: 3
+rate_limit: 5
