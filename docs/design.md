@@ -53,3 +53,12 @@ Prometheus + structured logs for observability
 // 2. Other way is to Just give a website like www.website.com
 // --> Have a search depth, try all possible things from most common uri words and try again
 // till we keep hitting, like a tree and backtrack when needed.
+
+
+// PHASE 2
+now that we are taking the input from a config file or input
+We need to use that data and do something with it.
+we open the base URI give to us
+
+// MAKE SCRAPER ENGINE
+// MAKE Discovery Engine

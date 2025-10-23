@@ -42,6 +42,7 @@ func main() {
 			var conf *config.ScrapeConfig
 			var err error
 
+			// Can add string flags to override the config file's values if given
 			if configPath == "" {
 				conf, err = config.LoadConfig("config.json") // This is the default val if string not present
 				if err != nil {
